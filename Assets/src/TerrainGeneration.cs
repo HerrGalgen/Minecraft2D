@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 public class TerrainGeneration : MonoBehaviour
 {
@@ -67,10 +69,18 @@ public class TerrainGeneration : MonoBehaviour
         
         camera.Spawn(new Vector3(player.spawnPos.x, player.spawnPos.y, camera.transform.position.z), worldSize);
         player.Spawn(worldSize);
+
+        RefreshChuncks();
     }
     
     /*****************************************************************/
 
+    private void Update()
+    {
+        RefreshChuncks();
+    }
+
+    /*****************************************************************/
     private void DrawCavesAndOres()
     {
         caveNoiseTexture = new Texture2D(worldSize, worldSize);
@@ -351,6 +361,20 @@ public class TerrainGeneration : MonoBehaviour
         
         Destroy(_worldTileObjects[_worldTiles.IndexOf(new Vector2(x, y))]);
         
+    }
+    
+    /*****************************************************************/
+
+    private void RefreshChuncks()
+    {
+        for (var i = 0; i < _worldChunks.Length; i++)
+        {
+            if (Vector2.Distance(new Vector2((i * chunkSize) + (chunkSize / 2), 0), new Vector2(player.transform.position.x, 0)) > Camera.main.orthographicSize * 4f)
+                 _worldChunks[i].SetActive(false);
+            else
+                _worldChunks[i].SetActive(true);
+            
+        }
     }
     
     /*****************************************************************/
