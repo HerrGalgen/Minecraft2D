@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02147c7b2ccc409469ad32d2eb32c475, type: 3}
+  m_Name: iron
+  m_EditorClassIdentifier: 
+  tileName: Iron
+  tileSprites:
+  - {fileID: 21300000, guid: bd1bce97c6de14b4aaa31c044fdb40c0, type: 3}
+  - {fileID: 21300000, guid: 634f2e3959c0ae24a9bc7288c9e380fc, type: 3}
+  - {fileID: 21300000, guid: 5ffca31441c0ec64fa6f05e4750f8c6c, type: 3}
+  - {fileID: 21300000, guid: 5ffca31441c0ec64fa6f05e4750f8c6c, type: 3}
+  - {fileID: 21300000, guid: d6b01dab0d599a8448fa0cb02067ac28, type: 3}
+  rarity: 0
