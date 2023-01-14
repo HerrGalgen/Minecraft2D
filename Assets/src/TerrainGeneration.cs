@@ -7,7 +7,7 @@ public class TerrainGeneration : MonoBehaviour
     /*****************************************************************/
 
     public PlayerController player;
-    public CamController camera;
+    public new CamController camera;
     
     //Terrain:
     [Header("Tile Atlas")]
@@ -26,30 +26,19 @@ public class TerrainGeneration : MonoBehaviour
     public int      chunkSize           = 20;
     public bool     generateCaves       = true;
     public int      worldSize           = 100;
-    //public float    heightMultiplier    = 25f;
-    //public float    surfaceValue        = 0.25f;
-    //public int      dirtLayerHeight     = 5;
     public int      heightAddition      = 25;
-    //public float    caveFreq            = 0.08f;
-    //public float    terrainFreq         = 0.04f;
+
 
     [Header("Noise Settings")]
     public Texture2D caveNoiseTexture;
 
     [Header("Ore Settings")]
     public OreClass[] ores;
-    //Tree:
-    // [Header("Tree")]
-    // public int      treeChance          = 10;
-    // public int      minTreeHeight       = 4;
-    // public int      maxTreeHeight       = 6;
-
-    // [Header("Grass")]
-    // public int      grassChance         = 3;
 
     //Stuff
     private GameObject[] _worldChunks;
     private List<Vector2> _worldTiles = new List<Vector2>();
+    private List<GameObject> _worldTileObjects = new List<GameObject>();
     private BiomeClass _curBiome;
 
     /*****************************************************************/
@@ -316,6 +305,7 @@ public class TerrainGeneration : MonoBehaviour
         newTile.name = tileSprites[0].name;
         newTile.transform.position = new Vector2(x + 0.5f, y + 0.5f);
         _worldTiles.Add(newTile.transform.position - (Vector3.one * 0.5f));
+        _worldTileObjects.Add(newTile);
     }
     /*****************************************************************/
 
@@ -352,4 +342,16 @@ public class TerrainGeneration : MonoBehaviour
     }
     /*****************************************************************/
 
+    public void RemoveTile(int x, int y)
+    {
+        if (!_worldTiles.Contains(new Vector2Int(x, y))
+            && x >= 0 && x <= worldSize
+            && y >= 0 && y <= worldSize) 
+            return;
+        
+        Destroy(_worldTileObjects[_worldTiles.IndexOf(new Vector2(x, y))]);
+        
+    }
+    
+    /*****************************************************************/
 }

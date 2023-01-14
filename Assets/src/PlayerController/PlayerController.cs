@@ -1,10 +1,10 @@
-using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     /*****************************************************************/
-
+    public Vector2Int mousePosition;
+    
     public float moveSpeed;
     public float jumpForce;
     public bool onGround;
@@ -16,8 +16,10 @@ public class PlayerController : MonoBehaviour
     private int _worldSize;
 
     private bool _hit;
-
+    
     public Vector2 spawnPos;
+
+    public TerrainGeneration terrainGeneration;
 
     /*****************************************************************/
 
@@ -51,6 +53,11 @@ public class PlayerController : MonoBehaviour
         _horizontal = Input.GetAxis("Horizontal");
         var jump = Input.GetAxis("Jump");
         var vertical = Input.GetAxisRaw("Vertical");
+
+        _hit = Input.GetMouseButton(0);
+
+        if (_hit && mousePosition.y > 0)
+            terrainGeneration.RemoveTile(mousePosition.x, mousePosition.y);
         
         if ( GetComponent<Transform>().position.x < 2 && _horizontal < 0
              || (GetComponent<Transform>().position.x > _worldSize - 2 && _horizontal > 0) )
@@ -60,9 +67,12 @@ public class PlayerController : MonoBehaviour
         }
             
         var movement = new Vector2(_horizontal * moveSpeed, _rb.velocity.y);
-
-        transform.localScale = new Vector3((_horizontal > 0 ? -1 : 1), 1, 1);
-
+        
+        if (_horizontal > 0) // looking direction
+            transform.localScale = new Vector3(-1, 1, 1);
+        else if (_horizontal < 0)
+            transform.localScale = new Vector3(1, 1, 1);
+        
         if (vertical > 0.1f || jump > 0.1f)
         {
             if (onGround)
@@ -76,6 +86,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        //set mouse position
+        mousePosition.x = Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).x - 0.5f);
+        mousePosition.y= Mathf.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition).y - 0.5f);
+        
         _animator.SetFloat("horizontal", _horizontal);
         _animator.SetBool("hit", _hit);
     }
