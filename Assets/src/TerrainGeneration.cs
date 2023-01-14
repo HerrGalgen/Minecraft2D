@@ -258,7 +258,7 @@ public class TerrainGeneration : MonoBehaviour
                         if (_worldTiles.Contains(new Vector2(x,y)))
                         {
                             if (_curBiome.tileAtlas.tallGrass != null)
-                                PlaceTile(_curBiome.tileAtlas.tallGrass.tileSprites, x, y+1, true);
+                                PlaceTile(_curBiome.tileAtlas.tallGrass.tileSprites, x, y+1, _curBiome.tileAtlas.tallGrass.inBackground);
                         }
                     }
                 }
@@ -323,31 +323,31 @@ public class TerrainGeneration : MonoBehaviour
     {   
         //generate logs
         for (var i = 0; i < treeHeight; i++) {
-            PlaceTile(tileAtlas.log.tileSprites, x, y+i, true);
+            PlaceTile(tileAtlas.log.tileSprites, x, y+i, tileAtlas.log.inBackground);
         }
 
         //generate leaves
         //main part
-        PlaceTile(tileAtlas.leaf.tileSprites, x, y+treeHeight, true);
-        PlaceTile(tileAtlas.leaf.tileSprites, x, y+treeHeight + 1, true);
-        PlaceTile(tileAtlas.leaf.tileSprites, x, y+treeHeight + 2, true);
-        PlaceTile(tileAtlas.leaf.tileSprites, x, y+treeHeight + 3, true);
+        PlaceTile(tileAtlas.leaf.tileSprites, x, y+treeHeight, tileAtlas.leaf.inBackground);
+        PlaceTile(tileAtlas.leaf.tileSprites, x, y+treeHeight + 1, tileAtlas.leaf.inBackground);
+        PlaceTile(tileAtlas.leaf.tileSprites, x, y+treeHeight + 2, tileAtlas.leaf.inBackground);
+        PlaceTile(tileAtlas.leaf.tileSprites, x, y+treeHeight + 3, tileAtlas.leaf.inBackground);
         
         //right
-        PlaceTile(tileAtlas.leaf.tileSprites, x+1, y+treeHeight-1, true);
-        PlaceTile(tileAtlas.leaf.tileSprites, x+1, y+treeHeight, true);
-        PlaceTile(tileAtlas.leaf.tileSprites, x+1, y+treeHeight+1, true);
-        PlaceTile(tileAtlas.leaf.tileSprites, x+1, y+treeHeight+2, true);
-        PlaceTile(tileAtlas.leaf.tileSprites, x+2, y+treeHeight, true);
-        PlaceTile(tileAtlas.leaf.tileSprites, x+2, y+treeHeight+1, true);
+        PlaceTile(tileAtlas.leaf.tileSprites, x+1, y+treeHeight-1, tileAtlas.leaf.inBackground);
+        PlaceTile(tileAtlas.leaf.tileSprites, x+1, y+treeHeight, tileAtlas.leaf.inBackground);
+        PlaceTile(tileAtlas.leaf.tileSprites, x+1, y+treeHeight+1, tileAtlas.leaf.inBackground);
+        PlaceTile(tileAtlas.leaf.tileSprites, x+1, y+treeHeight+2, tileAtlas.leaf.inBackground);
+        PlaceTile(tileAtlas.leaf.tileSprites, x+2, y+treeHeight, tileAtlas.leaf.inBackground);
+        PlaceTile(tileAtlas.leaf.tileSprites, x+2, y+treeHeight+1, tileAtlas.leaf.inBackground);
 
         //left 
-        PlaceTile(tileAtlas.leaf.tileSprites, x-1, y+treeHeight-1, true);
-        PlaceTile(tileAtlas.leaf.tileSprites, x-1, y+treeHeight, true);
-        PlaceTile(tileAtlas.leaf.tileSprites, x-1, y+treeHeight+1, true);
-        PlaceTile(tileAtlas.leaf.tileSprites, x-1, y+treeHeight+2, true);
-        PlaceTile(tileAtlas.leaf.tileSprites, x-2, y+treeHeight, true);
-        PlaceTile(tileAtlas.leaf.tileSprites, x-2, y+treeHeight+1, true);
+        PlaceTile(tileAtlas.leaf.tileSprites, x-1, y+treeHeight-1, tileAtlas.leaf.inBackground);
+        PlaceTile(tileAtlas.leaf.tileSprites, x-1, y+treeHeight, tileAtlas.leaf.inBackground);
+        PlaceTile(tileAtlas.leaf.tileSprites, x-1, y+treeHeight+1, tileAtlas.leaf.inBackground);
+        PlaceTile(tileAtlas.leaf.tileSprites, x-1, y+treeHeight+2, tileAtlas.leaf.inBackground);
+        PlaceTile(tileAtlas.leaf.tileSprites, x-2, y+treeHeight, tileAtlas.leaf.inBackground);
+        PlaceTile(tileAtlas.leaf.tileSprites, x-2, y+treeHeight+1, tileAtlas.leaf.inBackground);
 
     }
     /*****************************************************************/
