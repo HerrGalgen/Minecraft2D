@@ -17,3 +17,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 72024ee87cf06344ea1df6f8e122e2b3, type: 3}
   - {fileID: 21300000, guid: 47a2ab61363e8744ea82d69499e8e044, type: 3}
   rarity: 0
+  inBackground: 0
